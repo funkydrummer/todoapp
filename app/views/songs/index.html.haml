@@ -1,18 +1,83 @@
 - model_class = Song
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:content)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @songs.each do |song|
-      %tr
-        %td= song.content
-        %td= song.kind
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+%ul#tabs.nav.nav-pills{"data-tabs" => 'tabs'}
+  %li.active
+    = link_to "All", "#all", :data => { :toggle => 'tab'}
+  %li
+    = link_to "TODO", "#todos", :data => { :toggle => 'tab'}
+  %li
+    = link_to "Links", "#links", :data => { :toggle => 'tab'}
+  %li
+    = link_to "Joints", "#joints", :data => { :toggle => 'tab'}
+
+
+#my-tab-content.tab-content
+  .tab-pane.active#all
+    %h1 All
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:content)
+          %th= model_class.human_attribute_name(:kind)
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @songs.each do |song|
+          %tr
+            %td= song.content
+            %td= song.kind
+            %td
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+  .tab-pane.active#todos
+    %h1 TODO 
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:content)
+          %th= model_class.human_attribute_name(:kind)
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @todos.each do |song|
+          %tr
+            %td= song.content
+            %td= song.kind
+            %td
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+  .tab-pane.active#links
+    %h1 Links
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:content)
+          %th= model_class.human_attribute_name(:kind)
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @links.each do |song|
+          %tr
+            %td= song.content
+            %td= song.kind
+            %td
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+  .tab-pane.active#joints
+    %h1 Joints
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= model_class.human_attribute_name(:content)
+          %th= model_class.human_attribute_name(:kind)
+          %th=t '.actions', :default => t("helpers.actions")
+      %tbody
+        - @joints.each do |song|
+          %tr
+            %td= song.content
+            %td= song.kind
+            %td
+              = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
 
 =# link_to t('.new', :default => t("helpers.links.new")), new_song_path, :class => 'btn btn-primary'
 
-= render :partial => 'form'
+=# render :partial => 'form'

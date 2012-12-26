@@ -7,5 +7,6 @@ $ ->
   $button = $('.btn.btn-primary.kind')
   $button.click ->
     value =  $(this).text()
-    $('#song_kind').val(value);
-
+    $('#song_kind').val(value)
+    
+  $("#tabs").tab()

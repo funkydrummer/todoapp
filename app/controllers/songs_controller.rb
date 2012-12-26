@@ -2,6 +2,9 @@ class SongsController < InheritedResources::Base
 
   def index
     @song = Song.new
+    @links = Song.where(:kind => 'link')
+    @todos = Song.where(:kind => 'todo')
+    @joints = Song.where(:kind => 'joint')
     index!
   end
   

@@ -7,7 +7,6 @@
         .btn.btn-primary.kind Link
       = f.text_field :content, :class => 'text_field'
       = f.hidden_field :kind
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), songs_path, :class => 'btn'
+      = f.submit nil, :class => 'btn btn-primary'
+    =# link_to t('.cancel', :default => t("helpers.links.cancel")), songs_path, :class => 'btn'
 
