@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem "haml-rails"
 gem 'inherited_resources'
 gem 'rails', '3.2.9'
