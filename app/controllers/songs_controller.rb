@@ -14,7 +14,6 @@ class SongsController < InheritedResources::Base
   end
 
   def update
-    raise params.inspect
     params[:song][:kind] = params[:song][:kind].downcase
     update! { root_url }
   end
