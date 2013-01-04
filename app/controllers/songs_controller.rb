@@ -13,4 +13,10 @@ class SongsController < InheritedResources::Base
     create! { root_url }
   end
 
+  def update
+    raise params.inspect
+    params[:song][:kind] = params[:song][:kind].downcase
+    update! { root_url }
+  end
+
 end
