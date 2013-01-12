@@ -1,4 +1,4 @@
 class Song < ActiveRecord::Base
   default_scope order('created_at DESC')
-  attr_accessible :content, :kind
+  attr_accessible :content, :kind, :is_sample
 end

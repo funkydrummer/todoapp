@@ -8,5 +8,20 @@ $ ->
   $button.click ->
     value =  $(this).text()
     $('#song_kind').val(value)
+
+  $('#close-and-delete').live 'click', ->
+    #if (confirm("Are you sure?"))
+      id = $(this).attr('title')
+      href = "songs/" + id
+      $.post(href, { _method: 'delete' }, null, "script");
+      return false
+    #else
+    #return false
     
+  $(".toggled-checkbox").hide()
+  $(".btn.btn-primary.kind").click -> 
+    $(".toggled-checkbox").hide() 
+  $(".btn.btn-primary.kind.joint").click -> 
+    $(".toggled-checkbox").show() 
+
   $("#tabs").tab()

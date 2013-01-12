@@ -32,7 +32,7 @@
   .tab-pane.active#todos
     - @todos.each do |song|
       .alert.alert-success
-        %button.close{"data-dismiss" => "alert", :type => "button"}×
+        %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
         %strong BANG! 
         = song.content
 

@@ -3,10 +3,12 @@
     .controls
       .btn-group{"data-toggle" => "buttons-radio"}
         .btn.btn-primary.kind TODO
-        .btn.btn-primary.kind Joint
+        .btn.btn-primary.kind.joint Joint
         .btn.btn-primary.kind Link
       = f.text_field :content, :class => 'text_field'
       = f.hidden_field :kind
+      %span.toggled-checkbox Sample?
+      = f.check_box :is_sample, :class => 'toggled-checkbox'
       = f.submit nil, :class => 'btn btn-primary'
     =# link_to t('.cancel', :default => t("helpers.links.cancel")), songs_path, :class => 'btn'
 
