@@ -14,3 +14,33 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(document).ready(function() {
+  var inputWdith = '450px';
+  var inputWdithReturn = '200px';     
+
+  $('#input-in-nav').focus(function(){
+      if($(this).val()=='Enter text here...'){
+          $(this).val('');
+      }
+      
+      //animate the box
+      $(this).animate({
+          width: inputWdith
+      }, 400 )
+  }); 
+
+  $('#input-in-nav').blur(function(){
+      if($(this).val()==''){
+          $(this).val('Enter text here...');
+      }
+      
+      $(this).animate({
+          width: inputWdithReturn
+      }, 500 )
+          
+  });
+});
+
+/*
+*/

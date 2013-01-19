@@ -1,3 +1,15 @@
 .toggled-checkbox {
   color: white;
 }
+
+form.form-navbar {
+  margin: 0 0 -70px;
+}
+
+.input-navbar {
+  margin-top: 5px;
+}
+
+.main-padding-fix {
+  margin-top: 50px;
+}

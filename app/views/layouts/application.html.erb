@@ -7,15 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
-    <%= link_to "Storeit!", root_path, :class => 'brand' %>
-    <%= render :partial => 'songs/form' %>
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "Storeit!", root_path, :class => 'brand' %>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li><%= link_to "Settings", "#" %> </li>
+          <% if false %>
+            <li><a href="#contact">Contact</a></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+      <%= render :partial => 'songs/form' %>
+    </div>
   </div>
 </div>
-
-<div class="container">
+<div class="container main-padding-fix">
   <%= yield %>
 </div>
 </body>

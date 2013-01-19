@@ -1,14 +1,14 @@
-= form_for @song, :html => { :class => 'form-horizontal' } do |f|
+= form_for @song, :html => { :class => 'form-horizontal form-navbar' } do |f|
   .control-group
     .controls
       .btn-group{"data-toggle" => "buttons-radio"}
         .btn.btn-primary.kind TODO
         .btn.btn-primary.kind.joint Joint
         .btn.btn-primary.kind Link
-      = f.text_field :content, :class => 'text_field'
+      = f.text_field :content, :class => 'text_field input-navbar', :placeholder => "Enter text here...", :id => "input-in-nav"
       = f.hidden_field :kind
       %span.toggled-checkbox Sample?
       = f.check_box :is_sample, :class => 'toggled-checkbox'
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit "Save", :class => 'btn btn-primary'
     =# link_to t('.cancel', :default => t("helpers.links.cancel")), songs_path, :class => 'btn'
 
