@@ -30,9 +30,9 @@
                 = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
   .tab-pane.active#todos
     - @todos.each do |song|
-      .alert.alert-success
+      .alert.alert-white
         %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
-        %strong BANG! 
+        %strong TODO: 
         = song.content
 
   - if false  
@@ -49,32 +49,30 @@
               = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
               = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
   .tab-pane.active#links
-    %table.table.table-striped
-      %thead
-        %tr
-          %th= model_class.human_attribute_name(:content)
-          %th=t '.actions', :default => t("helpers.actions")
-      %tbody
-        - @links.each do |song|
+    - @links.each do |link|
+      .alert.alert-white
+        %button.close{"title" => "#{link.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
+        %strong LINK:
+        = link.content
+    - if false 
+      %table.table.table-striped
+        %thead
           %tr
-            %td= song.content
-            %td
-              = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
-              = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+            %th= model_class.human_attribute_name(:content)
+            %th=t '.actions', :default => t("helpers.actions")
+        %tbody
+          - @links.each do |song|
+            %tr
+              %td= song.content
+              %td
+                = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
+                = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
   .tab-pane.active#joints
-    %table.table.table-striped
-      %thead
-        %tr
-          %th= model_class.human_attribute_name(:content)
-          %th=t '.actions', :default => t("helpers.actions")
-      %tbody
-        - @joints.each do |song|
-          %tr
-            %td= song.content
-            %td
-              = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn btn-mini'
-              = link_to t('.destroy', :default => t("helpers.links.destroy")), song_path(song), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
-
+    - @joints.each do |joint|
+      .alert.alert-white
+        %button.close{"title" => "#{joint.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
+        %strong LINK:
+        = joint.content
 
 =# link_to t('.new', :default => t("helpers.links.new")), new_song_path, :class => 'btn btn-primary'
 
