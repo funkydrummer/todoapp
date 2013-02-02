@@ -11,14 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112123459) do
+ActiveRecord::Schema.define(:version => 20130202154548) do
 
   create_table "songs", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "kind"
-    t.boolean  "is_sample",  :default => false, :null => false
   end
 
 end

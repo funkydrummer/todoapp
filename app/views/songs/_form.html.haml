@@ -7,8 +7,8 @@
         .btn.btn-primary.kind Link
       = f.text_field :content, :class => 'text_field input-navbar', :placeholder => "Enter text here...", :id => "input-in-nav"
       = f.hidden_field :kind
-      %span.toggled-checkbox Sample?
-      = f.check_box :is_sample, :class => 'toggled-checkbox'
+      /%span.toggled-checkbox Sample?
+      /= f.check_box :is_sample, :class => 'toggled-checkbox'
       = f.submit "Save", :class => 'btn btn-warning'
     =# link_to t('.cancel', :default => t("helpers.links.cancel")), songs_path, :class => 'btn'
 

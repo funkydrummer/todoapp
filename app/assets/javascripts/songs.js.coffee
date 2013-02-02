@@ -17,11 +17,13 @@ $ ->
       return false
     #else
     #return false
-    
+  
+  ###
   $(".toggled-checkbox").hide()
   $(".btn.btn-primary.kind").click -> 
     $(".toggled-checkbox").hide() 
   $(".btn.btn-primary.kind.joint").click -> 
     $(".toggled-checkbox").show() 
+  ###
 
   $("#tabs").tab()
