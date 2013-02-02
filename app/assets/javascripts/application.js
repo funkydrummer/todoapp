@@ -30,6 +30,8 @@ $(document).ready(function() {
       }, 400 )
   }); 
 
+  /* TEMPORARY FIX */
+  /*
   $('#input-in-nav').blur(function(){
       if($(this).val()==''){
           $(this).val('Enter text here...');
@@ -40,7 +42,7 @@ $(document).ready(function() {
       }, 500 )
           
   });
-
+*/
   $('.btn.edit').hide();
   $('div.alert.alert-white').mouseover(function() {
     $(this).find('.btn.edit').show();
