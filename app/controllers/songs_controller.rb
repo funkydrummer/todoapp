@@ -5,6 +5,9 @@ class SongsController < InheritedResources::Base
     @links = Song.where(:kind => 'link')
     @todos = Song.where(:kind => 'todo')
     @joints = Song.where(:kind => 'joint')
+    
+    @for_destroy = Song.where(:kind => "")
+    
     index!
   end
   

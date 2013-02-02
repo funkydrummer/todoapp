@@ -34,6 +34,7 @@
         %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
         %strong TODO: 
         = song.content
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn edit btn-mini right'
 
   - if false  
     %table.table.table-striped
@@ -54,6 +55,7 @@
         %button.close{"title" => "#{link.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
         %strong LINK:
         = link.content
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(link), :class => 'btn edit btn-mini right'
     - if false 
       %table.table.table-striped
         %thead
@@ -73,6 +75,30 @@
         %button.close{"title" => "#{joint.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
         %strong LINK:
         = joint.content
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(joint), :class => 'btn edit btn-mini right'
+
+    
+    - @for_destroy.each do |song|
+      .alert.alert-white
+        %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
+        %strong ForDEST: 
+        = song.content
+        = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn edit btn-mini right'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 =# link_to t('.new', :default => t("helpers.links.new")), new_song_path, :class => 'btn btn-primary'
 

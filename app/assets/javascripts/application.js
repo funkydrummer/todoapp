@@ -40,6 +40,13 @@ $(document).ready(function() {
       }, 500 )
           
   });
+
+  $('.btn.edit').hide();
+  $('div.alert.alert-white').mouseover(function() {
+    $(this).find('.btn.edit').show();
+  }).mouseout(function(){
+    $(this).find('.btn.edit').hide();
+  });
 });
 
 /*
