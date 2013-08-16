@@ -1,4 +1,7 @@
 Musicapp::Application.routes.draw do
+  resources :categories
+
+
   resources :songs
 
 

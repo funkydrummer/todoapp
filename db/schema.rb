@@ -11,14 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202182447) do
+ActiveRecord::Schema.define(:version => 20130816142414) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.boolean  "is_visible"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "songs", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "kind"
     t.string   "page_title"
+    t.integer  "category_id", :null => false
   end
 
 end

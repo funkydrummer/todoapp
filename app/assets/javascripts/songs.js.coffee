@@ -6,8 +6,8 @@
 $ ->
   $button = $('.btn.btn-primary.kind')
   $button.click ->
-    value =  $(this).text()
-    $('#song_kind').val(value)
+    value =  $(this).attr('title')
+    $('#song_category_id').val(value)
 
   $('#close-and-delete').live 'click', ->
     #if (confirm("Are you sure?"))

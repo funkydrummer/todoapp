@@ -18,13 +18,13 @@
       <%= link_to "StoreIt!", root_path, :class => 'brand' %>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li><%= link_to "Settings", "#" %> </li>
+          <li><%= link_to "Settings", new_category_path %> </li>
           <% if false %>
             <li><a href="#contact">Contact</a></li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->
-      <%= render :partial => 'songs/form' %>
+      <%= render :partial => 'songs/form' unless controller.controller_name == "categories" %>
     </div>
   </div>
 </div>

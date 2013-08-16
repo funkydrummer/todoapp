@@ -3,15 +3,11 @@ class SongsController < InheritedResources::Base
 
   def index
     @song = Song.new
-    @links = Song.where(:kind => 'link')
-    @todos = Song.where(:kind => 'todo')
-    @joints = Song.where(:kind => 'joint')
     index!
   end
   
   def create
-    params[:song][:kind] = params[:song][:kind].downcase
-    
+    # need be reimplemented
     if params[:song][:kind] == 'link'
       params[:song][:page_title] = get_title
     end
@@ -20,7 +16,6 @@ class SongsController < InheritedResources::Base
   end
 
   def update
-    params[:song][:kind] = params[:song][:kind].downcase
     update! { root_url }
   end
 

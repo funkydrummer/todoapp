@@ -2,11 +2,10 @@
   .control-group
     .controls
       .btn-group{"data-toggle" => "buttons-radio"}
-        .btn.btn-primary.kind TODO
-        .btn.btn-primary.kind.joint Joint
-        .btn.btn-primary.kind Link
+        - Category.all.each do |category|
+          .btn.btn-primary.kind{title: category.id}= category.name
       = f.text_field :content, :class => 'text_field input-navbar', :placeholder => "Enter text here...", :id => "input-in-nav"
-      = f.hidden_field :kind
+      = f.hidden_field :category_id
       /%span.toggled-checkbox Sample?
       /= f.check_box :is_sample, :class => 'toggled-checkbox'
       = f.submit "Save", :class => 'btn btn-warning'
