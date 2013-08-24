@@ -21,10 +21,10 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
   gem 'less-rails'
 end
 
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'acts_as_list'
 gem 'pry-rails'
