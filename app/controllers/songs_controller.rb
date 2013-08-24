@@ -3,15 +3,12 @@ class SongsController < InheritedResources::Base
 
   def index
     @song = Song.new
-    @links = Song.where(:kind => 'link')
-    @todos = Song.where(:kind => 'todo')
-    @joints = Song.where(:kind => 'joint')
+    @categories = Category.includes(:songs)
     index!
   end
   
   def create
-    params[:song][:kind] = params[:song][:kind].downcase
-    
+    # need be reimplemented
     if params[:song][:kind] == 'link'
       params[:song][:page_title] = get_title
     end
@@ -20,11 +17,43 @@ class SongsController < InheritedResources::Base
   end
 
   def update
-    params[:song][:kind] = params[:song][:kind].downcase
     update! { root_url }
   end
 
+  def sort
+    params[:song].each_with_index do |id, index|
+      Song.update_all({position: index+1}, {id: id})
+    end
+    
+    render nothing: true
+  end
+
+  def color
+    @song = Song.find(params[:id])  
+    #@song.color_class = params[:set]
+    #@song.save!
+    @song.update_column(:color_class, params[:set])
+
+    @categories = Category.includes(:songs)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def wyp
+
+    respond_to do |format|
+      format.html { redirect_to songs_url }
+      format.js{ redirect_to songs_url }
+    end
+  end
   private
+
+  def collecion
+    @songs ||= end_of_association_chain.order('position')
+  end
+
   def get_title
     agent = Mechanize.new 
     agent.get(params[:song][:content])

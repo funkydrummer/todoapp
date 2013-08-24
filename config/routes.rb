@@ -1,5 +1,15 @@
 Musicapp::Application.routes.draw do
-  resources :songs
+  resources :categories
+
+
+  resources :songs do
+    collection do
+      post :sort
+    end
+    member do
+      get :color
+    end
+  end
 
 
   # The priority is based upon order of creation:
