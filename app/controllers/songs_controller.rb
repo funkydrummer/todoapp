@@ -3,6 +3,7 @@ class SongsController < InheritedResources::Base
 
   def index
     @song = Song.new
+    @categories = Category.includes(:songs)
     index!
   end
   
@@ -33,8 +34,10 @@ class SongsController < InheritedResources::Base
     #@song.save!
     @song.update_column(:color_class, params[:set])
 
+    @categories = Category.includes(:songs)
+
     respond_to do |format|
-      format.js{ redirect_to songs_url }
+      format.js
     end
   end
 
