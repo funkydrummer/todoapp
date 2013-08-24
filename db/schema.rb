@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816142414) do
+ActiveRecord::Schema.define(:version => 20130816210122) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20130816142414) do
     t.string   "kind"
     t.string   "page_title"
     t.integer  "category_id", :null => false
+    t.integer  "position"
+    t.string   "color_class"
   end
 
 end

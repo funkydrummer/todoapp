@@ -19,7 +19,38 @@ class SongsController < InheritedResources::Base
     update! { root_url }
   end
 
+  def sort
+    params[:song].each_with_index do |id, index|
+      Song.update_all({position: index+1}, {id: id})
+    end
+    
+    render nothing: true
+  end
+
+  def color
+    @song = Song.find(params[:id])  
+    #@song.color_class = params[:set]
+    #@song.save!
+    @song.update_column(:color_class, params[:set])
+
+    respond_to do |format|
+      format.js{ redirect_to songs_url }
+    end
+  end
+
+  def wyp
+
+    respond_to do |format|
+      format.html { redirect_to songs_url }
+      format.js{ redirect_to songs_url }
+    end
+  end
   private
+
+  def collecion
+    @songs ||= end_of_association_chain.order('position')
+  end
+
   def get_title
     agent = Mechanize.new 
     agent.get(params[:song][:content])

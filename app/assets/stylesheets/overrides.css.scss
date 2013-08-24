@@ -51,3 +51,7 @@ form.form-navbar {
 .right {
   float: right;
 }
+
+.tab-content {
+  overflow: visible; //fix 'z-index' dropdowns
+}

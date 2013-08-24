@@ -4,18 +4,43 @@
     %li
       = link_to category.name, "##{category.name}", :data => { :toggle => 'tab'}
 
-
 #my-tab-content.tab-content
   - Category.all.each do |category|
     .tab-pane.active{id: category.name}
       - if category.songs.present?
-        - category.songs.each do |song|
-          .alert.alert-white
-            %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
-            %i.icon-time
-            = song.content
-            = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn edit btn-mini right'
-
+        %ul.songs-list{ :"data-update-url" => sort_songs_url}
+          - category.songs.each do |song|
+            = content_tag_for :li, song do
+              .alert{ class: "#{song.color_class.present? ? song.color_class : "alert-white"}" }
+                %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
+                %i.icon-time
+                = song.content
+                = song.position
+                /= link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn edit btn-mini right'
+                .btn-group.right
+                  %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
+                    %span.caret
+                  %ul.dropdown-menu
+                    %li
+                      = link_to "dasdasd", "#"
+                    %li
+                      = link_to "dasdasd", "#"
+                    %li
+                      = link_to "dasdasd", "#"
+                    %li.divider
+                    %li.dropdown-submenu
+                      %a{:href => "#", :tabindex => "-1"} Color
+                      %ul.dropdown-menu
+                        %li
+                          = link_to "Green", "#", class: 'js-assign-color', :"data-color" => 'alert-success', :"data-id" => song.id
+                        %li
+                          = link_to "Blue", "#", class: 'js-assign-color', :"data-color" => 'alert-info', :"data-id" => song.id
+                        %li
+                          = link_to "Yellow", "#", class: 'js-assign-color', :"data-color" => 'alert-block', :"data-id" => song.id
+                        %li
+                          = link_to "Red", "#", class: 'js-assign-color', :"data-color" => 'alert-error', :"data-id" => song.id
+                        %li
+                          = link_to "None", "#", class: 'js-assign-color', :"data-color" => 'alert-white', :"data-id" => song.id
 
 - if false
   #my-tab-content.tab-content
