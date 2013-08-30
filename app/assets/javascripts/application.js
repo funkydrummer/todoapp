@@ -24,26 +24,12 @@ $(document).ready(function() {
       if($(this).val()=='Enter text here...'){
           $(this).val('');
       }
-      
       //animate the box
       $(this).animate({
           width: inputWdith
       }, 400 )
   }); 
 
-  /* TEMPORARY FIX */
-  /*
-  $('#input-in-nav').blur(function(){
-      if($(this).val()==''){
-          $(this).val('Enter text here...');
-      }
-      
-      $(this).animate({
-          width: inputWdithReturn
-      }, 500 )
-          
-  });
-*/
   $('.btn.edit').hide();
   $('div.alert.alert-white').mouseover(function() {
     $(this).find('.btn.edit').show();
@@ -51,6 +37,3 @@ $(document).ready(function() {
     $(this).find('.btn.edit').hide();
   });
 });
-
-/*
-*/
