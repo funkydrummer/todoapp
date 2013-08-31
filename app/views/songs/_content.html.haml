@@ -26,3 +26,14 @@
                         = link_to "Red", "#", class: 'js-assign-color', :"data-color" => 'alert-error', :"data-id" => song.id
                       %li
                         = link_to "None", "#", class: 'js-assign-color', :"data-color" => 'alert-white', :"data-id" => song.id
+                  %li.divider
+                  %li
+                    - if song.is_deletable?
+                      = link_to "Non-deletable", "#", class: 'js-non-deletable', :"data-value" => 'false', :"data-id" => song.id
+                    - else
+                      = link_to "✓ Non-deletable", "#", class: 'js-non-deletable', :"data-value" => 'true', :"data-id" => song.id
+                  %li
+                    - if song.is_hidden?
+                      = link_to "✓ Hidden", "#", class: 'js-hidden', :"data-value" => 'false', :"data-id" => song.id
+                    - else
+                      = link_to "Hidden", "#", class: 'js-hidden', :"data-value" => 'true', :"data-id" => song.id

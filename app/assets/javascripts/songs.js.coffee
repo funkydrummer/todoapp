@@ -13,10 +13,23 @@ $ ->
     href = "songs/" + id
     $.post(href, { _method: 'delete' }, null, "script");
     return false
+
   $('.js-assign-color').live 'click', ->
     color = $(this).data('color')
     itemId = $(this).data('id')
     href = 'songs/' + itemId + '/color' + '?set=' + color
+    $.get(href)
+  
+  $('.js-non-deletable').live 'click', ->
+    value = $(this).data('value')
+    itemId = $(this).data('id')
+    href = 'songs/' + itemId + '/non_deletable' + '?set=' + value 
+    $.get(href)
+
+  $('.js-hidden').live 'click', ->
+    value = $(this).data('value')
+    itemId = $(this).data('id')
+    href = 'songs/' + itemId + '/hide' + '?set=' + value 
     $.get(href)
 
   $("#tabs").tab()

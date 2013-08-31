@@ -8,6 +8,8 @@ Musicapp::Application.routes.draw do
     end
     member do
       get :color
+      get :non_deletable
+      get :hide
     end
   end
 

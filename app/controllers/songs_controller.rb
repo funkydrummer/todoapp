@@ -6,13 +6,13 @@ class SongsController < InheritedResources::Base
     @categories = Category.includes(:songs)
     index!
   end
-  
+
   def create
     # need be reimplemented
     if params[:song][:kind] == 'link'
       params[:song][:page_title] = get_title
     end
-    
+
     create! { root_url }
   end
 
@@ -24,14 +24,12 @@ class SongsController < InheritedResources::Base
     params[:song].each_with_index do |id, index|
       Song.update_all({position: index+1}, {id: id})
     end
-    
+
     render nothing: true
   end
 
   def color
     @song = Song.find(params[:id])  
-    #@song.color_class = params[:set]
-    #@song.save!
     @song.update_column(:color_class, params[:set])
 
     @categories = Category.includes(:songs)
@@ -41,13 +39,31 @@ class SongsController < InheritedResources::Base
     end
   end
 
-  def wyp
+  def non_deletable
+    @song = Song.find(params[:id])
+
+    boolean = params[:set] == "true" ? true : false
+    @song.update_column(:is_deletable, boolean)
+
+    @categories = Category.includes(:songs)
 
     respond_to do |format|
-      format.html { redirect_to songs_url }
-      format.js{ redirect_to songs_url }
+      format.js
     end
   end
+
+  def hide
+    @song = Song.find(params[:id])
+    boolean = params[:set] == "true" ? true : false
+    @song.update_column(:is_hidden, boolean)
+
+    @categories = Category.includes(:songs)
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def collecion
