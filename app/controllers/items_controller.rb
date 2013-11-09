@@ -9,6 +9,7 @@ class ItemsController < InheritedResources::Base
 
   def create
     # need be reimplemented
+    
     if params[:item][:kind] == 'link'
       params[:item][:page_title] = get_title
     end
@@ -21,6 +22,7 @@ class ItemsController < InheritedResources::Base
   end
 
   def sort
+    puts "DasdasdasdasdasD__________________________________________________________"
     params[:item].each_with_index do |id, index|
       Item.update_all({position: index+1}, {id: id})
     end
@@ -65,6 +67,10 @@ class ItemsController < InheritedResources::Base
   end
 
   private
+
+  def permitted_params
+    params.permit(:item => [:content, :kind, :page_title, :category_id])
+  end
 
   def collecion
     @items ||= end_of_association_chain.order('position')
