@@ -1,8 +1,0 @@
-$('#my-tab-content').html("<%= escape_javascript render(:partial => 'songs/content', :locals => { :categories => @categories}) %>");
-
-$('.songs-list').sortable({
-  axis: 'y',
-  update: function() {
-    return $.post($(this).data('update-url'), $(this).sortable('serialize'));
-  }
-});

@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
   attr_accessible :is_visible, :name
-  has_many :songs, dependent: :restrict
+  has_many :items, dependent: :restrict
 end

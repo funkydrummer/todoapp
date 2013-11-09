@@ -1,0 +1,39 @@
+- categories.each do |category|
+  .tab-pane.active{id: category.name}
+    - if category.items.present?
+      %ul.items-list{ :"data-update-url" => sort_items_url}
+        - category.items.order("position").each do |item|
+          = content_tag_for :li, item do
+            .alert{ class: "#{item.color_class.present? ? item.color_class : "alert-white"}" }
+              %button.close{"title" => "#{item.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
+              %i.icon-time
+              = item.content
+              .btn-group.right
+                .dropdown{"data-toggle" => "dropdown"}
+                  %span.caret
+                %ul.dropdown-menu
+                  /%li.divider
+                  %li.dropdown-submenu
+                    %a{:href => "#", :tabindex => "-1"} Color
+                    %ul.dropdown-menu
+                      %li
+                        = link_to "Green", "#", class: 'js-assign-color', :"data-color" => 'alert-success', :"data-id" => item.id
+                      %li
+                        = link_to "Blue", "#", class: 'js-assign-color', :"data-color" => 'alert-info', :"data-id" => item.id
+                      %li
+                        = link_to "Yellow", "#", class: 'js-assign-color', :"data-color" => 'alert-block', :"data-id" => item.id
+                      %li
+                        = link_to "Red", "#", class: 'js-assign-color', :"data-color" => 'alert-error', :"data-id" => item.id
+                      %li
+                        = link_to "None", "#", class: 'js-assign-color', :"data-color" => 'alert-white', :"data-id" => item.id
+                  %li.divider
+                  %li
+                    - if item.is_deletable?
+                      = link_to "Non-deletable", "#", class: 'js-non-deletable', :"data-value" => 'false', :"data-id" => item.id
+                    - else
+                      = link_to "✓ Non-deletable", "#", class: 'js-non-deletable', :"data-value" => 'true', :"data-id" => item.id
+                  %li
+                    - if item.is_hidden?
+                      = link_to "✓ Hidden", "#", class: 'js-hidden', :"data-value" => 'false', :"data-id" => item.id
+                    - else
+                      = link_to "Hidden", "#", class: 'js-hidden', :"data-value" => 'true', :"data-id" => item.id

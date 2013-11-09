@@ -1,4 +1,4 @@
-- model_class = Song
+- model_class = Item
 %ul#tabs.nav.nav-pills{"data-tabs" => 'tabs'}
   - Category.all.each do |category|
     %li
@@ -10,12 +10,12 @@
 - if false
   #my-tab-content.tab-content
     .tab-pane.active#todos
-      - @todos.each do |song|
+      - @todos.each do |item|
         .alert.alert-white
-          %button.close{"title" => "#{song.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
+          %button.close{"title" => "#{item.id}", "data-dismiss" => "alert", :type => "button", :id => 'close-and-delete'}×
           %i.icon-time
-          = song.content
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(song), :class => 'btn edit btn-mini right'
+          = item.content
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_item_path(item), :class => 'btn edit btn-mini right'
     .tab-pane.active#links
       - @links.each do |link|
         .alert.alert-white
@@ -23,7 +23,7 @@
           %i.icon-share-alt
           %strong= link.page_title
           = link_to link.content, url_with_protocol(link.content), :target => :_blank
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(link), :class => 'btn edit btn-mini right'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_item_path(link), :class => 'btn edit btn-mini right'
     .tab-pane.active#joints
       - @joints.each do |joint|
         .alert.alert-white
@@ -31,8 +31,4 @@
           %i.icon-music
           = joint.content
           = link_to "Fav", "#", :class => 'btn edit btn-mini right'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_song_path(joint), :class => 'btn edit btn-mini right'
-
-=# link_to t('.new', :default => t("helpers.links.new")), new_song_path, :class => 'btn btn-primary'
-
-=# render :partial => 'form'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_item_path(joint), :class => 'btn edit btn-mini right'

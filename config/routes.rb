@@ -2,7 +2,7 @@ Musicapp::Application.routes.draw do
   resources :categories
 
 
-  resources :songs do
+  resources :items do
     collection do
       post :sort
     end
@@ -63,7 +63,7 @@ Musicapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'songs#index'
+  root :to => 'items#index'
 
   # See how all your routes lay out with "rake routes"
 

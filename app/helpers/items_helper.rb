@@ -1,4 +1,4 @@
-module SongsHelper
+module ItemsHelper
 
   def url_with_protocol(url)
     /^http/.match(url) ? url : "http://#{url}"

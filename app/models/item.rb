@@ -1,4 +1,4 @@
-class Song < ActiveRecord::Base
+class Item < ActiveRecord::Base
   acts_as_list
 
   attr_accessible :content, :kind, :page_title, :category_id

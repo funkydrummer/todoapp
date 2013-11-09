@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class SongsHelperTest < ActionView::TestCase
+class ItemsHelperTest < ActionView::TestCase
 end
