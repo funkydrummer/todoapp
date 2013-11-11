@@ -8,25 +8,25 @@ $ ->
     value =  $(this).attr('title')
     $('#item_category_id').val(value)
 
-  $('#close-and-delete').live 'click', ->
+  $('#close-and-delete').on 'click', ->
     id = $(this).attr('title')
     href = "items/" + id
     $.post(href, { _method: 'delete' }, null, "script");
     return false
 
-  $('.js-assign-color').live 'click', ->
+  $('.js-assign-color').on 'click', ->
     color = $(this).data('color')
     itemId = $(this).data('id')
     href = 'items/' + itemId + '/color' + '?set=' + color
     $.get(href)
   
-  $('.js-non-deletable').live 'click', ->
+  $('.js-non-deletable').on 'click', ->
     value = $(this).data('value')
     itemId = $(this).data('id')
     href = 'items/' + itemId + '/non_deletable' + '?set=' + value 
     $.get(href)
 
-  $('.js-hidden').live 'click', ->
+  $('.js-hidden').on 'click', ->
     value = $(this).data('value')
     itemId = $(this).data('id')
     href = 'items/' + itemId + '/hide' + '?set=' + value 
