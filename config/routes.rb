@@ -1,4 +1,4 @@
-Musicapp::Application.routes.draw do
+ToDoApp::Application.routes.draw do
   resources :categories
 
 

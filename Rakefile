@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Musicapp::Application.load_tasks
+ToDoApp::Application.load_tasks
